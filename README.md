@@ -4,17 +4,22 @@
 
 
 // Classe de validação de números de CPF e CNPJ
+
 // Esta classe retorna um valor booleano
+
 
 class Validar_CPF_CNPJ {
 
    
-/* Método de verificação e validação.
-*   Verifica se a entrada é de 11 ou 14 caracteres numéricos.
-*   Caso seja CPF ou CNPJ, faz o teste de validação correspondente.
-*   @param numero (String)
-*   Return boolean
-*/
+// Método de verificação e validação.
+
+// Verifica se a entrada é de 11 ou 14 caracteres numéricos.
+
+// Caso seja CPF ou CNPJ, faz o teste de validação correspondente.
+
+// @param numero (String)
+
+// Return boolean
 
     boolean valida_cpf_cnpj(String numero){
 
@@ -39,7 +44,9 @@ class Validar_CPF_CNPJ {
 
 
 // Método de Validação do CPF
+
 // @param cpf (String)
+
 // Return boolean
 
     boolean valido_cpf(String cpf){
@@ -106,8 +113,11 @@ class Validar_CPF_CNPJ {
         }
     }
 
+
 // Método de Validação do CNPJ
+
 // @param cnpj (String)
+
 // Return boolean
 
     boolean valido_cnpj(String cnpj){
