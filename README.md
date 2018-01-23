@@ -1,56 +1,59 @@
-/**
- * Created by Evandro Albuquerque Bezerra on 18/07/17.
- */
 
-/**
- * Classe de validação de números de CPF e CNPJ
- * Esta classe retorna um valor booleano
- */
+// Created by Evandro Albuquerque Bezerra on 18/07/17.
+
+
+
+// Classe de validação de números de CPF e CNPJ
+// Esta classe retorna um valor booleano
+
 class Validar_CPF_CNPJ {
 
-    /**
-     * Método de verificação e validação.
-     * Verifica se a entrada é de 11 ou 14 caracteres numéricos.
-     * Caso seja CPF ou CNPJ, faz o teste de validação correspondente.
-     * @param numero (String)
-     * Return boolean
-     */
+   
+// Método de verificação e validação.
+// Verifica se a entrada é de 11 ou 14 caracteres numéricos.
+// Caso seja CPF ou CNPJ, faz o teste de validação correspondente.
+// @param numero (String)
+// Return boolean
+
     boolean valida_cpf_cnpj(String numero){
 
-        /** Verifica se é apenas números */
+        // Verifica se é apenas números 
         if(numero =~ /[0-9]+/){
-            /** Verifica se a entrada é um CPF */
+            
+	    // Verifica se a entrada é um CPF
             if(numero.length()==11) {
                 return valido_cpf(numero)
             }
-            /** Verifica se a entrada é um CNPJ */
+
+            // Verifica se a entrada é um CNPJ
             if(numero.length()==14){
                 return valido_cnpj(numero)
             }
         }
+	// Retorna falso se a entrada não for de caracteres numéricos
         else{
             return false
         }
     }
 
-    /**
-     * Método de Validação do CPF
-     * @param cpf (String)
-     * Return boolean
-     */
+
+// Método de Validação do CPF
+// @param cpf (String)
+// Return boolean
+
     boolean valido_cpf(String cpf){
 
-        /** Armazena os dígitos do CPF */
+        // Armazena os dígitos do CPF
         int dig1 = 0
         int dig2 = 0
 
-        /** Verifica se os números do CPF são todos iguais. Os dígitos não podem ser todos iguais. */
+        // Verifica se os números do CPF são todos iguais. Os dígitos não podem ser todos iguais.
         if(cpf =~ /(\d)\1{10}/){
             return false
         }
         else {
 
-            /** Cálculo de validação do dígito 1 */
+            // Cálculo de validação do dígito 1
             dig1 += 10 * cpf[0].toInteger()
             dig1 += 9 * cpf[1].toInteger()
             dig1 += 8 * cpf[2].toInteger()
@@ -68,7 +71,7 @@ class Validar_CPF_CNPJ {
                 dig1 = 11 - (dig1 % 11)
             }
 
-            /** Cálculo de validação do dígito 2 */
+            // Cálculo de validação do dígito 2
             dig2 += 11 * cpf[0].toInteger()
             dig2 += 10 * cpf[1].toInteger()
             dig2 += 9 * cpf[2].toInteger()
@@ -87,13 +90,13 @@ class Validar_CPF_CNPJ {
                 dig2 = 11 - (dig2 % 11)
             }
 
-            /** Transforma os dígitos do CPF em String e concatena */
+            // Transforma os dígitos do CPF em String e concatena
             String digitos1 = dig1.toString() + dig2.toString()
 
-            /** Concatena os dígitos do CPF */
+            // Concatena os dígitos do CPF 
             String digitos2 = cpf[9] + cpf[10]
 
-            /** Compara se os dígitos os calculados e os informados são idênticos */
+            // Compara se os dígitos os calculados e os informados são idênticos
             if (digitos1 == digitos2) {
                 return true
             } else {
@@ -102,24 +105,23 @@ class Validar_CPF_CNPJ {
         }
     }
 
-    /**
-     * Método de Validação do CNPJ
-     * @param cnpj (String)
-     * Return boolean
-     */
+// Método de Validação do CNPJ
+// @param cnpj (String)
+// Return boolean
+
     boolean valido_cnpj(String cnpj){
 
-        /** Armazena os dígitos do CNPJ */
+        // Armazena os dígitos do CNPJ
         int dig1 = 0
         int dig2 = 0
 
-        /** Verifica se os números do CNPJ são todos iguais. Os dígitos não podem ser todos iguais. */
+        // Verifica se os números do CNPJ são todos iguais. Os dígitos não podem ser todos iguais.
         if(cnpj =~ /(\d)\1{13}/){
             return false
         }
         else {
 
-            /** Cálculo de validação do dígito 1 */
+            // Cálculo de validação do dígito 1
             dig1 += 5 * cnpj[0].toInteger()
             dig1 += 4 * cnpj[1].toInteger()
             dig1 += 3 * cnpj[2].toInteger()
@@ -140,7 +142,7 @@ class Validar_CPF_CNPJ {
                 dig1 = 11- (dig1 % 11)
             }
 
-            /** Cálculo de validação do dígito 2 */
+            // Cálculo de validação do dígito 2
             dig2 += 6 * cnpj[0].toInteger()
             dig2 += 5 * cnpj[1].toInteger()
             dig2 += 4 * cnpj[2].toInteger()
@@ -162,13 +164,13 @@ class Validar_CPF_CNPJ {
                 dig2 = 11 - (dig2 % 11)
             }
 
-            /** Transforma os dígitos do CNPJ em String e concatena */
+            // Transforma os dígitos do CNPJ em String e concatena
             String digitos1 = dig1.toString() + dig2.toString()
 
-            /** Concatena os dígitos do CNPJ */
+            // Concatena os dígitos do CNPJ
             String digitos2 = cnpj[12] + cnpj[13]
 
-            /** Compara se os dígitos os calculados e os informados são idênticos */
+            // Compara se os dígitos os calculados e os informados são idênticos
             if (digitos1 == digitos2) {
                 return true
             } else {
